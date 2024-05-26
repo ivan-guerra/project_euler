@@ -1,9 +1,9 @@
 #include <cstdlib>
 #include <iostream>
-#include <stdexcept>
 #include <string>
 #include <string_view>
 
+#include "common/conversions.h"
 #include "common/types.h"
 #include "soln_factory/soln_factory.h"
 
@@ -25,21 +25,26 @@ int main(int argc, char** argv) {
     std::exit(EXIT_FAILURE);
   }
 
-  try {
-    euler::types::SolnId id = std::stoul(argv[1]);
-
-    auto f = euler::sfactory::GetSoln(id);
-    if (f) {
-      std::vector<std::string_view> args(argv + 2, argv + argc);
-      (*f)(args);
-    } else {
-      PrintErrorAndExit("no solution exists for problem " +
-                        std::string(argv[1]));
+  auto id = euler::conv::StrToULong(argv[1]);
+  if (!id.has_value()) {
+    switch (id.error()) {
+      case euler::conv::ErrorCode::kInvalidArg:
+        PrintErrorAndExit("PROGRAM_ID is not a positive integer");
+      case euler::conv::ErrorCode::kOutOfRange:
+        PrintErrorAndExit("PROGRAM_ID is too large");
     }
-  } catch (const std::invalid_argument& e) {
-    PrintErrorAndExit("PROGRAM_ID is not a positive integer");
-  } catch (const std::out_of_range& e) {
-    PrintErrorAndExit("PROGRAM_ID is too large");
   }
+
+  auto soln_func = euler::sfactory::GetSoln(id.value());
+  if (soln_func) {
+    std::vector<std::string_view> args(argv + 2, argv + argc);
+    euler::types::SolnRetCode rc = (*soln_func)(args);
+    if (rc != euler::types::SolnRetCode::kSuccess) {
+      PrintErrorAndExit(euler::types::kRetCodeToStr[rc]);
+    }
+  } else {
+    PrintErrorAndExit("no solution exists for problem " + std::string(argv[1]));
+  }
+
   std::exit(EXIT_SUCCESS);
 }
