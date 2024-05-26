@@ -14,4 +14,5 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${PE_INCLUDE_DIR})
 target_link_libraries(
   ${PROJECT_NAME}
   PUBLIC common
-  PRIVATE soln_1)
+  PRIVATE soln_1
+          soln_2)

@@ -1,3 +1,4 @@
 cmake_minimum_required(VERSION 3.28)
 
 add_subdirectory(soln_1)
+add_subdirectory(soln_2)
