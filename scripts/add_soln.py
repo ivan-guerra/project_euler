@@ -52,7 +52,7 @@ class SolutionGenerator:
         toplevel_cmake = os.path.join(
             self.PROJECT_DIR, 'src/solns/CMakeLists.txt')
         with open(toplevel_cmake, 'a') as fp:
-            fp.write('add_subdirectory(soln_' + id + ')')
+            fp.write('add_subdirectory(soln_' + id + ')\n')
 
     def __add_target_test(self, id):
         # Create the target source directory.
@@ -73,7 +73,7 @@ class SolutionGenerator:
         toplevel_cmake = os.path.join(
             self.PROJECT_DIR, 'test/solns/CMakeLists.txt')
         with open(toplevel_cmake, 'a') as fp:
-            fp.write('add_subdirectory(soln_' + id + ')')
+            fp.write('add_subdirectory(soln_' + id + ')\n')
 
     def __update_soln_factory_link(self, id):
         soln_factory_cmake = os.path.join(
