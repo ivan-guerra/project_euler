@@ -38,9 +38,11 @@ int main(int argc, char** argv) {
   auto soln_func = euler::sfactory::GetSoln(id.value());
   if (soln_func) {
     std::vector<std::string_view> args(argv + 2, argv + argc);
-    euler::types::SolnRetCode rc = (*soln_func)(args);
-    if (rc != euler::types::SolnRetCode::kSuccess) {
-      PrintErrorAndExit(euler::types::kRetCodeToStr[rc]);
+    euler::types::SolnFuncRet ret = (*soln_func)(args);
+    if (ret.has_value()) {
+      std::cout << "answer: " << ret.value() << std::endl;
+    } else {
+      PrintErrorAndExit(euler::types::kRetCodeToStr[ret.error()]);
     }
   } else {
     PrintErrorAndExit("no solution exists for problem " + std::string(argv[1]));

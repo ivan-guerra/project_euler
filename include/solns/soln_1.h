@@ -5,7 +5,7 @@
 
 namespace euler {
 
-types::SolnRetCode Soln1(const types::SolnFuncArgs& args);
+types::SolnFuncRet Soln1(const types::SolnFuncArgs& args);
 
 }
 
