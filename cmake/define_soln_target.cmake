@@ -11,6 +11,7 @@ function(define_soln_target id)
 
   target_sources(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}.cpp)
 
-  message("PE_INCLUDE_DIR = ${PE_INCLUDE_DIR}")
   target_include_directories(${PROJECT_NAME} PUBLIC ${PE_INCLUDE_DIR})
+
+  target_link_libraries(${PROJECT_NAME} PUBLIC common)
 endfunction()
