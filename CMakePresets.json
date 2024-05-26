@@ -1,0 +1,111 @@
+{
+  "version": 8,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 28,
+    "patch": 2
+  },
+  "configurePresets": [
+    {
+      "name": "release",
+      "displayName": "linux release config",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/builds/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": {
+          "type": "STRING",
+          "value": "Release"
+        },
+        "CMAKE_INSTALL_PREFIX": {
+          "type": "STRING",
+          "value": "${sourceDir}/bin/release"
+        }
+      }
+    },
+    {
+      "name": "debug",
+      "displayName": "linux debug config",
+      "description": "Recommended config for developers.",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/builds/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": {
+          "type": "string",
+          "value": "Debug"
+        },
+        "CMAKE_INSTALL_PREFIX": {
+          "type": "STRING",
+          "value": "${sourceDir}/bin/debug"
+        },
+        "CMAKE_EXPORT_COMPILE_COMMANDS": {
+          "type": "BOOL",
+          "value": "ON"
+        },
+        "CMAKE_C_COMPILER_LAUNCHER": {
+          "type": "string",
+          "value": "ccache"
+        },
+        "CMAKE_CXX_COMPILER_LAUNCHER": {
+          "type": "string",
+          "value": "ccache"
+        }
+      }
+    },
+    {
+      "name": "debug-valgrind",
+      "displayName": "linux debug config (no ASAN, LSAN, etc.)",
+      "inherits": "debug",
+      "cacheVariables": {
+        "ENABLE_ASAN": {
+          "type": "BOOL",
+          "value": "OFF"
+        }
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "release",
+      "configurePreset": "release"
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug"
+    },
+    {
+      "name": "debug-valgrind",
+      "configurePreset": "debug-valgrind"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "release",
+      "configurePreset": "release",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "noTestsAction": "error",
+        "jobs": 20
+      }
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "output": {
+        "outputOnFailure": true,
+        "verbosity": "extra"
+      },
+      "execution": {
+        "noTestsAction": "error",
+        "stopOnFailure": true,
+        "jobs": 20
+      }
+    },
+    {
+      "name": "debug-valgrind",
+      "configurePreset": "debug-valgrind",
+      "inherits": "debug"
+    }
+  ]
+}
