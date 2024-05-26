@@ -8,7 +8,7 @@
 namespace euler {
 namespace types {
 
-using SolnId = unsigned int; /**< Project Euler problem ID. */
+using SolnId = unsigned long; /**< Project Euler problem ID. */
 using SolnFuncArgs =
     std::vector<std::string_view>; /**< Solution function arguments. */
 using SolnFunc =
