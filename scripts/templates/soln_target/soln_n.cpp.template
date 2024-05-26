@@ -1,0 +1,11 @@
+#include <cstdint>
+
+#include "common/conversions.h"
+#include "common/types.h"
+#include "solns/soln_<N>.h"
+
+namespace euler {
+
+types::SolnFuncRet Soln<N>(const types::SolnFuncArgs& args) { return 0; }
+
+}  // namespace euler

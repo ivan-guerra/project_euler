@@ -1,0 +1,4 @@
+#include <gtest/gtest.h>
+#include "solns/soln_<N>.h"
+
+TEST(Soln<N>Test, HelloWorld) {}

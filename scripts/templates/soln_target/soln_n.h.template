@@ -1,0 +1,12 @@
+#ifndef SOLN_<N>_H_
+#define SOLN_<N>_H_
+
+#include "common/types.h"
+
+namespace euler {
+
+types::SolnFuncRet Soln<N>(const types::SolnFuncArgs& args);
+
+}
+
+#endif
