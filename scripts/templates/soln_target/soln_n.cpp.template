@@ -6,6 +6,17 @@
 
 namespace euler {
 
-types::SolnFuncRet Soln<N>(const types::SolnFuncArgs& args) { return 0; }
+types::SolnFuncRet Soln<N>(const types::SolnFuncArgs& args) { 
+  if (args.size() != 1) {
+    return std::unexpected(types::SolnErrorCode::kInvalidArgCount);
+  }
+
+  const auto kLimit = euler::conv::StrToULong(args[0]);
+  if (!kLimit.has_value()) {
+    return std::unexpected(types::SolnErrorCode::kCannotConvertStrToUInt);
+  }
+
+  return 0; 
+}
 
 }  // namespace euler
