@@ -16,4 +16,5 @@ target_link_libraries(
   PUBLIC common
   PRIVATE soln_1
           soln_2
-          soln_3)
+          soln_3
+          soln_4)

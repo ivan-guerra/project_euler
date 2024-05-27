@@ -81,7 +81,7 @@ class SolutionGenerator:
 
         # Add the new benchmark target's directory.
         toplevel_cmake = os.path.join(
-            self.PROJECT_DIR, 'test/solns/CMakeLists.txt')
+            self.PROJECT_DIR, 'benchmark/solns/CMakeLists.txt')
         with open(toplevel_cmake, 'a') as fp:
             fp.write('add_subdirectory(soln_' + id + ')\n')
 
