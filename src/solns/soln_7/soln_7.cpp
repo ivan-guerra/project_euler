@@ -1,6 +1,5 @@
-#include "solns/soln_3.h"
+#include "solns/soln_7.h"
 
-#include <algorithm>
 #include <cmath>
 #include <cstdint>
 
@@ -22,7 +21,7 @@ static bool IsPrime(int64_t n) {
   return true;
 }
 
-types::SolnFuncRet Soln3(const types::SolnFuncArgs& args) {
+types::SolnFuncRet Soln7(const types::SolnFuncArgs& args) {
   if (args.size() != 1) {
     return std::unexpected(types::SolnErrorCode::kInvalidArgCount);
   }
@@ -32,14 +31,17 @@ types::SolnFuncRet Soln3(const types::SolnFuncArgs& args) {
     return std::unexpected(types::SolnErrorCode::kCannotConvertStrToUInt);
   }
 
-  int64_t max_prime_factor = 0;
-  for (int64_t i = 2; i <= std::sqrt(kLimit.value()); ++i) {
-    if (kLimit.value() % i == 0 && IsPrime(i)) {
-      max_prime_factor = std::max(max_prime_factor, i);
+  int64_t limit = kLimit.value();
+  int64_t curr_prime = 0;
+  int64_t i = 2;
+  while (limit) {
+    if (IsPrime(i)) {
+      curr_prime = i;
+      limit--;
     }
+    i++;
   }
-
-  return max_prime_factor;
+  return curr_prime;
 }
 
 }  // namespace euler
