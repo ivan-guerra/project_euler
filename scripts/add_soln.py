@@ -31,7 +31,9 @@ class SolutionGenerator:
 
     def __add_target_include(self, id):
         self.__add_file(id,
-                        'include/solns', 'soln_target/soln_n.h.template', 'soln_' + id + '.h')
+                        'include/solns',
+                        'soln_target/soln_n.h.template',
+                        'soln_' + id + '.h')
 
     def __add_target_src(self, id):
         # Create the target source directory.
@@ -42,11 +44,15 @@ class SolutionGenerator:
 
         # Install the CMakeLists.txt.
         self.__add_file(id,
-                        src_dir_suffix, 'soln_target/CMakeLists.txt.template', 'CMakeLists.txt')
+                        src_dir_suffix,
+                        'soln_target/CMakeLists.txt.template',
+                        'CMakeLists.txt')
 
         # Install the CPP.
         self.__add_file(id,
-                        src_dir_suffix, 'soln_target/soln_n.cpp.template', 'soln_' + id + '.cpp')
+                        src_dir_suffix,
+                        'soln_target/soln_n.cpp.template',
+                        'soln_' + id + '.cpp')
 
         # Add the new solution target's directory.
         toplevel_cmake = os.path.join(
@@ -54,22 +60,26 @@ class SolutionGenerator:
         with open(toplevel_cmake, 'a') as fp:
             fp.write('add_subdirectory(soln_' + id + ')\n')
 
-    def __add_target_test(self, id):
+    def __add_target_benchmark(self, id):
         # Create the target source directory.
-        test_dir_suffix = 'test/solns/soln_' + id
-        test_dir = os.path.join(
-            self.PROJECT_DIR, test_dir_suffix)
-        os.mkdir(test_dir)
+        benchmark_dir_suffix = 'benchmark/solns/soln_' + id
+        benchmark_dir = os.path.join(
+            self.PROJECT_DIR, benchmark_dir_suffix)
+        os.mkdir(benchmark_dir)
 
         # Install the CMakeLists.txt.
         self.__add_file(id,
-                        test_dir_suffix, 'soln_test/CMakeLists.txt.template', 'CMakeLists.txt')
+                        benchmark_dir_suffix,
+                        'soln_benchmark/CMakeLists.txt.template',
+                        'CMakeLists.txt')
 
         # Install the CPP.
         self.__add_file(id,
-                        test_dir_suffix, 'soln_test/soln_n_test.cpp.template', 'soln_' + id + '_test.cpp')
+                        benchmark_dir_suffix,
+                        'soln_benchmark/soln_n_benchmark.cpp.template',
+                        'soln_' + id + '_benchmark.cpp')
 
-        # Add the new test target's directory.
+        # Add the new benchmark target's directory.
         toplevel_cmake = os.path.join(
             self.PROJECT_DIR, 'test/solns/CMakeLists.txt')
         with open(toplevel_cmake, 'a') as fp:
@@ -107,7 +117,7 @@ class SolutionGenerator:
     def add_solution(self, id):
         self.__add_target_include(id)
         self.__add_target_src(id)
-        self.__add_target_test(id)
+        self.__add_target_benchmark(id)
         self.__update_soln_factory_link(id)
         self.__update_soln_factory_src(id)
 

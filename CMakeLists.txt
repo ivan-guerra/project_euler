@@ -9,8 +9,9 @@ set(PE_INCLUDE_DIR
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 include(set_compile_link_flags)
+include(enable_unit_testing)
+include(enable_benchmarking)
+
 add_subdirectory(apps)
 add_subdirectory(src)
-
-include(enable_unit_testing)
-add_subdirectory(test)
+add_subdirectory(benchmark)

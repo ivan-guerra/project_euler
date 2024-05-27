@@ -19,6 +19,10 @@
         "CMAKE_INSTALL_PREFIX": {
           "type": "STRING",
           "value": "${sourceDir}/bin/release"
+        },
+        "BENCHMARK_ENABLE_TESTING": {
+          "type": "STRING",
+          "value": "OFF"
         }
       }
     },
@@ -30,7 +34,7 @@
       "binaryDir": "${sourceDir}/builds/${presetName}",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": {
-          "type": "string",
+          "type": "STRING",
           "value": "Debug"
         },
         "CMAKE_INSTALL_PREFIX": {
@@ -42,12 +46,16 @@
           "value": "ON"
         },
         "CMAKE_C_COMPILER_LAUNCHER": {
-          "type": "string",
+          "type": "STRING",
           "value": "ccache"
         },
         "CMAKE_CXX_COMPILER_LAUNCHER": {
-          "type": "string",
+          "type": "STRING",
           "value": "ccache"
+        },
+        "BENCHMARK_ENABLE_TESTING": {
+          "type": "STRING",
+          "value": "OFF"
         }
       }
     },
@@ -58,6 +66,10 @@
       "cacheVariables": {
         "ENABLE_ASAN": {
           "type": "BOOL",
+          "value": "OFF"
+        },
+        "BENCHMARK_ENABLE_TESTING": {
+          "type": "STRING",
           "value": "OFF"
         }
       }
