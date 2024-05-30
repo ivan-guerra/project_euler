@@ -27,4 +27,5 @@ target_link_libraries(
           soln_11
           soln_12
           soln_13
-          soln_14)
+          soln_14
+          soln_15)
