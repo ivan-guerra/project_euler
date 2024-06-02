@@ -30,8 +30,10 @@ int main(int argc, char** argv) {
     switch (id.error()) {
       case euler::conv::ErrorCode::kInvalidArg:
         PrintErrorAndExit("PROGRAM_ID is not a positive integer");
+        break;
       case euler::conv::ErrorCode::kOutOfRange:
         PrintErrorAndExit("PROGRAM_ID is too large");
+        break;
     }
   }
 
