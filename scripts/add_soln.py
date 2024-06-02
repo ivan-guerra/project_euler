@@ -19,7 +19,8 @@ class SolutionGenerator:
                 file.write(line)
             file.close()
 
-    def __add_file(self, id, project_dir_suffix, template_dir_suffix, target_filename):
+    def __add_file(self, id, project_dir_suffix, template_dir_suffix,
+                   target_filename):
         template_file = os.path.join(
             self.TEMPLATE_DIR, template_dir_suffix)
         target_dir = os.path.join(self.PROJECT_DIR, project_dir_suffix)
