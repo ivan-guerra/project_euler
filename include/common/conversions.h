@@ -12,8 +12,8 @@ enum class ErrorCode {
   kInvalidArg,
 };
 
-std::expected<long, ErrorCode> StrToLong(const std::string_view& str);
-std::expected<unsigned long, ErrorCode> StrToULong(const std::string_view& str);
+std::expected<long, ErrorCode> StrToLong(const std::string_view str);
+std::expected<unsigned long, ErrorCode> StrToULong(const std::string_view str);
 
 }  // namespace conv
 }  // namespace euler

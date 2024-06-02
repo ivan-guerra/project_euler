@@ -15,7 +15,7 @@ using Direction = std::pair<int, int>;
 using RowVect = std::vector<int64_t>;
 using Matrix = std::vector<RowVect>;
 
-static Matrix LoadMatrix(const std::string_view& data, unsigned long dim) {
+static Matrix LoadMatrix(const std::string_view data, unsigned long dim) {
   Matrix mat(dim, RowVect(dim, 0));
   std::stringstream ss(data.data());
   for (unsigned long i = 0; i < dim; ++i) {

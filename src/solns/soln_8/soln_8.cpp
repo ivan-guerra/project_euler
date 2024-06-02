@@ -18,7 +18,7 @@ types::SolnFuncRet Soln8(const types::SolnFuncArgs& args) {
   if (!kWindowSize.has_value()) {
     return std::unexpected(types::SolnErrorCode::kCannotConvertStrToUInt);
   }
-  const std::string_view& num = args[0];
+  const std::string_view num = args[0];
   int64_t max_prod = 0;
   for (std::size_t i = 0; (i + kWindowSize.value()) < num.size(); ++i) {
     int64_t prod = 1;

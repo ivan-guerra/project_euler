@@ -15,7 +15,7 @@ namespace euler {
 using BigNum = std::vector<int>;
 using BigNumVect = std::vector<BigNum>;
 
-static BigNumVect LoadNums(const std::string_view& num_file) {
+static BigNumVect LoadNums(const std::string_view num_file) {
   std::ifstream is(num_file.data());
   std::string line;
   BigNumVect nums;

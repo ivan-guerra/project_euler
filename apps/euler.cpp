@@ -14,7 +14,7 @@ static void PrintUsage() {
   std::cout << "\tARGS\n\t\tzero or more problem input args" << std::endl;
 }
 
-static void PrintErrorAndExit(const std::string_view& err_msg) {
+static void PrintErrorAndExit(const std::string_view err_msg) {
   std::cerr << "error: " << err_msg << std::endl;
   std::exit(EXIT_FAILURE);
 }
