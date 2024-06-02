@@ -1,4 +1,5 @@
 import os
+import sys
 import shutil
 import argparse
 import in_place
@@ -7,8 +8,9 @@ import re
 
 class SolutionGenerator:
     def __init__(self):
-        self.PROJECT_DIR = os.path.join(os.getcwd(), os.pardir)
-        self.TEMPLATE_DIR = os.path.join(os.getcwd(), 'templates')
+        scripts_dir = os.path.dirname(sys.argv[0])
+        self.PROJECT_DIR = os.path.join(scripts_dir, os.pardir)
+        self.TEMPLATE_DIR = os.path.join(scripts_dir, 'templates')
 
     def __insert_id(self, id, filepath):
         with in_place.InPlace(filepath) as file:
