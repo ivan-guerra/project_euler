@@ -25,6 +25,12 @@ int main(int argc, char** argv) {
     std::exit(EXIT_FAILURE);
   }
 
+  const std::string_view kFirstArg(argv[1]);
+  if (("--help" == kFirstArg) || ("-h" == kFirstArg)) {
+    PrintUsage();
+    std::exit(EXIT_SUCCESS);
+  }
+
   auto id = euler::conv::StrToULong(argv[1]);
   if (!id.has_value()) {
     switch (id.error()) {
