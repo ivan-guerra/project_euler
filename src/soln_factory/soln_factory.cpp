@@ -22,6 +22,7 @@
 #include "solns/soln_17.h"
 #include "solns/soln_18.h"
 #include "solns/soln_19.h"
+#include "solns/soln_20.h"
 
 namespace euler {
 namespace sfactory {
@@ -66,6 +67,8 @@ std::optional<types::SolnFunc> GetSoln(types::SolnId id) {
       return Soln18;
     case 19:
       return Soln19;
+    case 20:
+      return Soln20;
     default:
       return std::nullopt;
   }
