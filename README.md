@@ -35,7 +35,7 @@ compute the answer to problem 1:
 In general, the program usage is
 
 ```bash 
-euler PROBLEM_ID [ARGS]...
+euler PROBLEM_ID [ARGS...]
 ```
 
 ### Running a Benchmark

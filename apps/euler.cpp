@@ -8,7 +8,7 @@
 #include "soln_factory/soln_factory.h"
 
 static void PrintUsage() {
-  std::cout << "usage: euler PROBLEM_ID [ARGS]..." << std::endl;
+  std::cout << "usage: euler PROBLEM_ID [ARGS...]" << std::endl;
   std::cout << "display project euler solutions" << std::endl;
   std::cout << "\tPROBLEM_ID\n\t\ta project euler problem id" << std::endl;
   std::cout << "\tARGS\n\t\tzero or more problem input args" << std::endl;
